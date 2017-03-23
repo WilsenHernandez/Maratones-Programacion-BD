@@ -1,0 +1,211 @@
+\documentclass[doc, 12pt, donotrepeattitle]{apa6}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{url}
+
+\title
+{Maratones de Programación
+
+Documentación de la Base de Datos}
+\shorttitle{Documentación BD}
+\author{Freddy Durán \\ José Briceño \\ Wilsen Hernández}
+\affiliation{Universidad de Carabobo
+
+Facultad Experimental de Ciencias y Tecnología
+
+Departamento de Computación
+
+Base de Datos}
+
+\begin{document}
+\maketitle
+\newpage
+\subsection*{Descripción de las Entidades}
+\section*{Equipo}
+\subsection*{Descripción:}
+Grupo de cinco (5) integrantes que participa en alguna competencia de Programación.
+
+\subsection*{Atributos:}
+\begin{itemize}
+\item \texttt{NombreEquipo}: Secuencia de hasta 48 caracteres alfabéticos. Atributo Clave.
+\item \texttt{AreaExpTecnico}: Secuencia de hasta 48 caracteres alfabéticos. Atributo simple, obligatorio y monovalente.
+\item \texttt{Clasificacion}: Entero. Atributo simple, obligatorio y monovalente.
+\item \texttt{FechaCreacion}: Tipo Fecha (Date) en el formato $dd/mm/aa$. Atributo simple, obligatorio y monovalente.
+\item \texttt{CargoCoach}: Secuencia de hasta 48 caracteres alfabéticos. Atributo simple, obligatorio y monovalente.
+\end{itemize}
+
+\section*{Integrante}
+\subsection*{Descripción:}
+Personas que conforman un Equipo, pueden ser Estudiantes, Profesores, Tecnicos o Coach.
+
+\subsection*{Atributos:}
+\begin{itemize}
+\item \texttt{CI}: Secuencia de hasta 16 caracteres alfabéticos. Atributo clave.
+\item \texttt{Nombre}: Secuencia de hasta 48 caracteres alfabéticos. Atributo simple, obligatorio y monovalente.
+\item \texttt{Telefono}: Entero. Atributo simple, obligatorio y monovalente.
+\item \texttt{Direccion}: Secuencia de hasta 128 caracteres alfábeticos. Atributo simple, obligatorio y monovalente.
+\item \texttt{Incentivos}: Secuencia de hasta 128 caracteres alfábeticos. Atributo simple, no obligatorio y polivalente.
+\item \texttt{Tipo}: Secuencia de hasta 24 caracteres alfabéticos. Atributo simple, obligatorio y monovalente. (Estudiante, Coach o Tecnico)
+\item \texttt{Carrera}: Secuencia de hasta 48 caracteres alfabéticos. Atributo simple, obligatorio y monovalente.
+\item \texttt{FechaNac}: Tipo Fecha (Date) en el formato $dd/mm/aa$. Atributo simple, obligatorio y monovalente.
+\end{itemize}
+
+\section*{Entrenamiento}
+\subsection*{Descripción:}
+Entidad que describe los entrenamientos que reciben los equipos participantes en las competencias de programación.
+
+\subsection*{Atributos:}
+\begin{itemize}
+\item \texttt{Tipo}: Secuenncia de hasta 128 caracteres alfabéticos. Atributo clave.
+\item \texttt{Fecha}: Tipo Fecha (Date) en el formato $dd/mm/aa$. Atributo clave.
+\end{itemize}
+
+\section*{Competencia}
+\subsection*{Descripción:}
+Entidad principal que describe las competencias de programación, donde y cuando se realizan estas mismas.
+
+\subsection*{Atributos:}
+\begin{itemize}
+\item \texttt{Fecha}: Tipo Fecha en el formato $dd/mm/aa$. Atributo clave.
+\item \texttt{Region}: Secuencia de hasta 48 caracteres alfábeticos. Atributo clave.
+\item \texttt{Sites}: Secuencia de hasta 128 caracteres alfábeticos. Atributo simple, obligatorio y monovalente.
+\item \texttt{Nivel}: Entero. Atributo simple, obligatorio y monovalente.
+\item \texttt{Duracion}: Tipo Tiempo (Time) en el formato $hh:mm:ss$. Atributo simple, obligatorio y monovalente.
+\item \texttt{HoraInicio}: Tipo Tiempo (Time) en el formato $hh:mm:ss$. Atributo simple, obligatorio y monovalente.
+\end{itemize}
+
+\newpage
+\section*{Reporte}
+\subsection*{Descripción:}
+Entidad que describe los datos del viaje realizado por los integrantes del grupo, quien financia el viaje, los objetos que lleva consigo y si tuvo algun incidente.
+
+\subsection*{Atributos:}
+\begin{itemize}
+\item \texttt{Fecha}: Tipo Fecha (Date) en el formato $dd/mm/aa$. Atributo clave.
+\item \texttt{Lugar}: Secuencia de hasta 128 caracteres alfabéticos. Atributo clave.
+\item \texttt{Libros}: Secuencia de hasta 128 caracteres alfabéticos. Atributo simple, obligatorio y monovalente.
+\item \texttt{Financia}: Secuencia de hasta 48 caracteres alfabéticos. Atributo simple, obligatorio y monovalente.
+\item \texttt{Sitios}: Secuencia de hasta 128 caracteres alfábeticos. Atributo simple, obligatorio y monovalente.
+\item \texttt{Otros}: Secuencia de hasta 48 caracteres alfabéticos. Atributo simple, obligatorio y monovalente.
+\item \texttt{Incidente}: Secuencia de hasta 160 caracteres alfabéticos. Atributo simple, no obligatorio y polivalente.
+\end{itemize}
+
+\section*{Universidad}
+\subsection*{Descripción:}
+Describe los datos de la Universidad y departamento que se encarga de promocionar los estudiantes a las diferentes competencias.
+
+\subsection*{Atributos:}
+\begin{itemize}
+\item \texttt{RIF}: Secuencia de hasta 16 caracteres alfabéticos. Atributo clave.
+\item \texttt{Nombre}: Secuencia de hasta 48 caracteres alfabéticos. Atributo simple, obligatorio y monovalente.
+\item \texttt{Pais}: Secuencia de hasta 24 caracteres alfabéticos. Atributo simple, obligatorio y monovalente.
+\item \texttt{Departamento}: Secuencia de hasta 48 caracteres alfabéticos. Atributo simple, obligatorio y monovalente.
+\item \texttt{Facultad}: Secuencia de hasta 48 caracteres alfabéticos. Atributo simple, obligatorio y monovalente.
+\end{itemize}
+
+\newpage
+\section*{Problemas}
+\subsection*{Descripción:}
+Listado de todos los problemas propuestos en las competencias de programación.
+
+\subsection*{Atributos:}
+\begin{itemize}
+\item \texttt{CodigoProblema}: Entero. Atributo clave.
+\item \texttt{Enunciado}: Secuencia de hasta 2048 caracteres alfábeticos. Atributo simple, obligatorio y monovalente.
+\item \texttt{Dificultad}: Secuencia de hasta 48 caracteres alfabéticos. Atributo simple, obligatorio y monovalente.
+\item \texttt{TiempoLimiteSol}: Tipo Tiempo (Time) en el formato $hh:mm:ss.ss$. Atriubto simple, obligatorio y monovalente.
+\end{itemize}
+
+\newpage
+\subsection*{Descripción de las Interrelaciones}
+\section*{Conforma}
+\subsection*{Descripcion:}
+Un Equipo esta conformado por un máximo de cinco integrantes y un Integrante puede haber formado parte de un equipo u otro en un instante de tiempo determinado.
+\begin{itemize}
+\item \textbf{Grado:} Binaria.
+\item \textbf{Cardinalidad:} 5:N entre Equipo e Integrante.
+\item \textbf{Participación:} La participación de Equipo es obligatoria, y la participación de Integrante es obligatoria.
+\end{itemize}
+\subsection*{Atributos:}
+\begin{itemize}
+\item \texttt{FechaInscripcion}: Tipo Fecha (Date) en el formato $dd/mm/aa$. Atributo simple, obligatorio y monovalente.
+\end{itemize}
+
+\section*{Recibe}
+\subsection*{Descripción:}
+Un equipo recibe uno o varios entrenamientos, y un entrenamiento es recibido por uno o varios equipos.
+\begin{itemize}
+\item \textbf{Grado:} Binaria.
+\item \textbf{Cardinalidad:} N:N entre Equipo y Entrenamiento.
+\item \textbf{Participación:} La participacion de Equipo es obligatoria, y la participacion de Entrenamiento es obligatoria.
+\end{itemize}
+
+\section*{Viaja}
+\subsection*{Descripción:}
+Un integrante viaja una o muchas veces a una competencia y se genera un reporte del viaje, y un reporte de viaje es generado por cada viaje que haga un integrante.
+\begin{itemize}
+\item \textbf{Grado:} Binaria.
+\item \textbf{Cardinalidad:} 1:1 entre Integrante y Reporte.
+\item \textbf{Participación:} La participación de Integrante es obligatoria y la de Reporte es obligatoria.
+\end{itemize}
+
+\section*{Pertenece}
+\subsection*{Descripción:}
+Un equipo pertenece a una unica universidad, y a una universidad pueden pertenecer muchos equipos.
+\begin{itemize}
+\item \textbf{Grado:} Binaria.
+\item \textbf{Cardinalidad:} 1:N entre Universidad y Equipo.
+\item \textbf{Participación:} La participacion de Universidad es obligatoria y la de Equipo es obligatoria.
+\end{itemize}
+
+\section*{Participa}
+\subsection*{Descripción:}
+Uno o muchos equipos participan en una competencia, y en una competencia participan uno o muchos equipos.
+\begin{itemize}
+\item \textbf{Grado:} Binaria.
+\item \textbf{Cardinalidad:} N:N entre Equipo y Competencia.
+\item \textbf{Participación:} La participación de Equipo es obligatoria y la de Competencia es obligatoria.
+\end{itemize}
+
+\subsection*{Atributos:}
+\begin{itemize}
+\item \texttt{Ranking}: Entero. Atributo simple, obligatorio y monovalente.
+\end{itemize}
+
+\section*{Propone}
+\subsection*{Descripción:}
+Una competencia propone uno o muchos ejercicios, y un ejercicio es propuesto por una competencia.
+\begin{itemize}
+\item \textbf{Grado:} Binaria.
+\item \textbf{Cardinalidad:} 1:N entre Competencia y Problemas.
+\item \textbf{Participación:} La participación de Competencia es obligatoria y la de Problemas es obligatoria.
+\end{itemize}
+
+\newpage
+\section*{Resuelve}
+\subsection*{Descripción:}
+Un equipo resuelve ninguno o muchos ejercicios, y un ejercicio es resuelto por ninguno o muchos equipos.
+\begin{itemize}
+\item \texttt{Grado:} Binaria
+\item \texttt{Cardinalidad:} N:N entre Equipo y Problemas.
+\item \texttt{Participación:} La participación de Equipo es opcional y la de Problemas es opcional.
+\end{itemize}
+
+\subsection*{Atributos:}
+\begin{itemize}
+\item \texttt{HoraEntrega}: Tipo Tiempo (Time) en el formato $hh:mm:ss.ss$. Atriubto simple, obligatorio y monovalente.
+\item \texttt{TipoSolucion}: Secuencia de hasta 48 caracteres alfabéticos. Atributo simple, obligatorio y monovalente.
+\item \texttt{Lenguaje}: Secuencia de hasta 48 caracteres alfabéticos. Atributo simple, obligatorio y monovalente.
+\item \texttt{TiempoSolucion}: Tipo Tiempo (Time) en el formato $hh:mm:ss.ss$. Atriubto simple, obligatorio y monovalente.
+\end{itemize}
+
+\section*{Promociona}
+\subsection*{Descripción:}
+Una universida promociona una o muchas competencia, y una competencia es promocionada por una o muchas universidades.
+\begin{itemize}
+\item \textbf{Grado:} Binaria.
+\item \textbf{Cardinalidad:} N:N entre Competencia y Universidad.
+\item \textbf{Participación:} La participación de Competencia es obligatoria y la de Universidad es obligatoria.
+\end{itemize}
+
+\end{document}
