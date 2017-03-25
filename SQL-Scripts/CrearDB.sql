@@ -1,6 +1,6 @@
-CREATE DATABASE Maraton-Progra TEMPLATE template1;
+CREATE DATABASE maraton_progra TEMPLATE template1;
 
-\c Maraton-Progra
+\c maraton_progra
 
 CREATE SCHEMA Maraton;
 
@@ -55,7 +55,7 @@ CREATE TABLE Maraton.Problemas(
 	CONSTRAINT FK_Problemas FOREIGN KEY (Region,Fecha) REFERENCES Maraton.Competencia(Region,Fecha)
 );
 CREATE TABLE Maraton.Reporte(
-	CI-Integrante		VARCHAR(48)				,
+	CI_Integrante		VARCHAR(48)				,
 	Lugar				VARCHAR(128)			,
 	Fecha				DATE					,
 	Libros				VARCHAR(128)	NOT NULL,
@@ -63,24 +63,24 @@ CREATE TABLE Maraton.Reporte(
 	Sitios				VARCHAR(128)	NOT NULL,
 	Otros				VARCHAR(48)		NOT NULL,
 	CONSTRAINT PK_Reporte PRIMARY KEY (Lugar,Fecha),
-	CONSTRAINT FK_Reporte FOREIGN KEY (CI-Integrante) REFERENCES Maraton.Integrante(CI)
+	CONSTRAINT FK_Reporte FOREIGN KEY (CI_Integrante) REFERENCES Maraton.Integrante(CI)
 );
 
-CREATE TABLE Maraton.Incentivo-Integrante(
-	CI-Incentivado		VARCHAR(48)
-	Incentivos			VARCHAR(128)
-	CONSTRAINT PK_Incentivo-Integrante PRIMARY KEY (CI-Incentivado,Incentivos),
-	CONSTRAINT FK_Incentivo-Integrante FOREIGN KEY (CI-Incentivado) REFERENCES Maraton.Integrante(CI)
+CREATE TABLE Maraton.Incentivo_Integrante(
+	CI_Incentivado		VARCHAR(48),
+	Incentivos			VARCHAR(128),
+	CONSTRAINT PK_Incentivo_Integrante PRIMARY KEY (CI_Incentivado,Incentivos),
+	CONSTRAINT FK_Incentivo_Integrante FOREIGN KEY (CI_Incentivado) REFERENCES Maraton.Integrante(CI)
 );
 
-CREATE TABLE Maraton.Incidente-Viaje(
-	CI-Integrante		VARCHAR(48),
+CREATE TABLE Maraton.Incidente_Viaje(
+	CI_Integrante		VARCHAR(48),
 	Lugar				VARCHAR(128),
 	Fecha				DATE,
 	Incidente			VARCHAR(160)	NOT NULL,
-	CONSTRAINT PK_Incidente-Viaje PRIMARY KEY (CI-Integrante,Lugar,Fecha),
-	CONSTRAINT FK_Incidente-Viaje FOREIGN KEY (CI-Integrante) REFERENCES Maraton.Integrante(CI),
-	CONSTRAINT FK_Incidente-Viaje2 FOREIGN KEY (Lugar,Fecha) REFERENCES Maraton.Reporte(Lugar,Fecha)
+	CONSTRAINT PK_Incidente_Viaje PRIMARY KEY (CI_Integrante,Lugar,Fecha),
+	CONSTRAINT FK_Incidente_Viaje FOREIGN KEY (CI_Integrante) REFERENCES Maraton.Integrante(CI),
+	CONSTRAINT FK_Incidente_Viaje2 FOREIGN KEY (Lugar,Fecha) REFERENCES Maraton.Reporte(Lugar,Fecha)
 );
 
 CREATE TABLE Maraton.Recibe(
@@ -103,9 +103,9 @@ CREATE TABLE Maraton.Participa(
 );
 
 CREATE TABLE Maraton.Resuelve(
-	NombreEquipo		VARCHAR(48)
-	CodigoProblema		INT
-	Fecha				DATE			NOT NULL
+	NombreEquipo		VARCHAR(48),
+	CodigoProblema		INT,
+	Fecha				DATE			NOT NULL,
 	HoraEntrega			TIME			NOT NULL,
 	TipoSolucion		VARCHAR(48)		NOT NULL,
 	Lenguaje			VARCHAR(48)		NOT NULL,
