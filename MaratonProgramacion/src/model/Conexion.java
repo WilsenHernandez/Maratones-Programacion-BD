@@ -15,9 +15,10 @@ public class Conexion {
 		String url = "jdbc:postgresql://localhost:5432/postgres";
 		try {
 			log = DriverManager.getConnection(url, user, new String(password));
-			if (log != null)
+			if (log.isValid(0))
 				username = user;
 		} catch (SQLException e) {
+			log = null;
 			username = "ERROR DE CONEXIÓN";
 			JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), "Error", 0);
 		}
@@ -44,9 +45,11 @@ public class Conexion {
 	{
 		if (log.isValid(0)) {
 			try {
-				username = "DESCONECTADO";
 				log.close();
 			} catch (Exception e) { }
+			
+			System.out.println(username.toUpperCase() + " DESCONECTADO");
+			username = "DESCONECTADO";
 		}
 			
 	}

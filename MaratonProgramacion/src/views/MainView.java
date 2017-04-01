@@ -1,17 +1,20 @@
 package views;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.JButton;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 
 import model.Conexion;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import views.panels.MainTeamLoad;
+import views.panels.MainWelcome;
 
 /**
  * @author Wilsen Hernandez
@@ -19,8 +22,7 @@ import java.awt.event.ActionEvent;
 @SuppressWarnings("serial")
 public class MainView extends JFrame {
 
-	private JPanel contentPane;
-
+	private JPanel welcomePane;
 	/**
 	 * Launch the application.
 	 */
@@ -28,7 +30,8 @@ public class MainView extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainView frame = new MainView();
+					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+					MainView frame = new MainView();			
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,39 +39,52 @@ public class MainView extends JFrame {
 			}
 		});
 	}
-
+	
 	/**
 	 * Create the frame.
 	 */
 	public MainView() {
 		setTitle("Maratones de Programación - Usuario: " + Conexion.getUsername());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 500, 400);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+		setBounds(0, 0, 800, 600);
 		
-		JButton btnNewButton = new JButton("Cerrar Sesion");
-		btnNewButton.addActionListener(new ActionListener() {
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Inscribir Equipo");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setNewPane(new MainTeamLoad());
+			}
+		});
+		
+		JMenuItem mntmInicio = new JMenuItem("Inicio");
+		mntmInicio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setNewPane(new MainWelcome());
+			}
+		});
+		menuBar.add(mntmInicio);
+		menuBar.add(mntmNewMenuItem);
+		
+		JMenuItem mntmCerrarSesion = new JMenuItem("Cerrar Sesion");
+		mntmCerrarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				viewmodel.MainViewModel.logout();
 			}
 		});
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(btnNewButton)
-					.addContainerGap(402, Short.MAX_VALUE))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(btnNewButton)
-					.addContainerGap(316, Short.MAX_VALUE))
-		);
-		contentPane.setLayout(gl_contentPane);
+		mntmCerrarSesion.setIcon(new ImageIcon(MainView.class.getResource("/com/sun/java/swing/plaf/windows/icons/Error.gif")));
+		mntmCerrarSesion.setHorizontalAlignment(SwingConstants.CENTER);
+		menuBar.add(mntmCerrarSesion);
+		
+		welcomePane = new MainWelcome();
+		setContentPane(welcomePane);
+	}
+	
+	private void setNewPane(JPanel arg) {
+		welcomePane.removeAll();
+		welcomePane = arg;
+		setContentPane(welcomePane);
+		setVisible(true);
 	}
 }

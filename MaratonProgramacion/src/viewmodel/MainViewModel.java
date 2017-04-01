@@ -10,12 +10,15 @@ public class MainViewModel {
 			try {
 				Conexion.logout();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
+		
+		// Eliminar la ventana principal de Main
 		if (views.launcher.Main.mainWindow != null)
 			views.launcher.Main.mainWindow.dispose();
+		
+		// Inicializar nuevamente la vista de Login
 		views.LoginView.main(null);
 	}
 

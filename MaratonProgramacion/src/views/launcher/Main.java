@@ -13,6 +13,7 @@ public class Main {
 			mainWindow = new views.MainView();
 		}
 		mainWindow.requestFocus();
+		mainWindow.setLocationRelativeTo(null);
 		return mainWindow;
 	}
 

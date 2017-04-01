@@ -13,7 +13,7 @@ public class LoginViewModel {
 		if (model.Conexion.login(usr, pswd)) {
 			System.out.println(usr.toUpperCase() + " CONECTADO");
 		} else {
-			System.err.println("PSQL - Error de conexión");
+			System.err.println("PSQL - Error de conexión.");
 		}
 	}
 }

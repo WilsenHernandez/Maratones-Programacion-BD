@@ -14,6 +14,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.UIManager;
 
 import model.Conexion;
 
@@ -25,12 +26,16 @@ public class LoginView {
 	private JTextField userField;
 	private JPasswordField passwordField;
 	private JFrame mainWindow;
-
+	private JPanel panel;
+	
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		try {
+			
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			
 			LoginView window = new LoginView();
 			window.frmMaratonesProgramacin.setVisible(true);
 		} catch (Exception e) {
@@ -51,11 +56,11 @@ public class LoginView {
 		frmMaratonesProgramacin = new JFrame();
 		frmMaratonesProgramacin.setResizable(false);
 		frmMaratonesProgramacin.setTitle("Maratones Programación");
-		frmMaratonesProgramacin.setBounds(100, 100, 289, 243);
+		frmMaratonesProgramacin.setBounds(100, 100, 285, 246);
 		frmMaratonesProgramacin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMaratonesProgramacin.setLocationRelativeTo(null);
 		
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 		frmMaratonesProgramacin.getContentPane().add(panel, BorderLayout.CENTER);
 		
 		JLabel lblLoginScreen = new JLabel("Maratones de Programación");
@@ -79,6 +84,13 @@ public class LoginView {
 		passwordField = new JPasswordField();
 		passwordField.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				LoginViewModel.Login(userField.getText(), passwordField.getPassword());
+				if (Conexion.isConnected()) {
+					mainWindow = views.launcher.Main.launch();
+					mainWindow.setLocationRelativeTo(null);
+					mainWindow.setVisible(true);
+					frmMaratonesProgramacin.dispose();
+				}
 			}
 		});
 		lblContrasea.setLabelFor(passwordField);
@@ -105,7 +117,7 @@ public class LoginView {
 				.addGroup(gl_panel.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(separator, GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+						.addComponent(separator, GroupLayout.PREFERRED_SIZE, 255, Short.MAX_VALUE)
 						.addComponent(lblLoginScreen)
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
@@ -113,10 +125,10 @@ public class LoginView {
 								.addComponent(lblContrasea))
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addComponent(passwordField)
 								.addComponent(btnIniciarSesion)
-								.addComponent(userField, GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))
-							.addPreferredGap(ComponentPlacement.RELATED))
+								.addComponent(passwordField, GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+								.addComponent(userField))
+							.addGap(14))
 						.addComponent(lblVersion, Alignment.TRAILING))
 					.addContainerGap())
 		);
@@ -137,7 +149,7 @@ public class LoginView {
 						.addComponent(lblContrasea))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(btnIniciarSesion)
-					.addPreferredGap(ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
 					.addComponent(lblVersion)
 					.addContainerGap())
 		);
