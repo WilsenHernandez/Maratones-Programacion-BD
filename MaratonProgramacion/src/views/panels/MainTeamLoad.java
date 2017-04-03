@@ -24,7 +24,7 @@ public class MainTeamLoad extends JPanel {
 	public MainTeamLoad() {
 		
 		JLabel tituloPanel = new JLabel("Inscribir Equipo Nuevo");
-		tituloPanel.setFont(new Font("Open Sans", Font.PLAIN, 14));
+		tituloPanel.setFont(new Font("Open Sans", Font.BOLD, 16));
 		
 		JSeparator separator = new JSeparator();
 		

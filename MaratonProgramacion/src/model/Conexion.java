@@ -21,6 +21,7 @@ public class Conexion {
 			log = null;
 			username = "ERROR DE CONEXIÓN";
 			JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), "Error", 0);
+			System.out.println(e);
 		}
 		return log != null;
 	}

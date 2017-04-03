@@ -15,6 +15,7 @@ import javax.swing.UIManager;
 import model.Conexion;
 import views.panels.MainTeamLoad;
 import views.panels.MainWelcome;
+import java.awt.Rectangle;
 
 /**
  * @author Wilsen Hernandez
@@ -44,9 +45,10 @@ public class MainView extends JFrame {
 	 * Create the frame.
 	 */
 	public MainView() {
+		setResizable(false);
+		setBounds(new Rectangle(0, 0, 800, 600));
 		setTitle("Maratones de Programación - Usuario: " + Conexion.getUsername());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 800, 600);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);

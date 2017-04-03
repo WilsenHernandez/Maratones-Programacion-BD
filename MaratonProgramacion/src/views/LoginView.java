@@ -86,7 +86,7 @@ public class LoginView {
 			public void actionPerformed(ActionEvent e) {
 				LoginViewModel.Login(userField.getText(), passwordField.getPassword());
 				if (Conexion.isConnected()) {
-					mainWindow = views.launcher.Main.launch();
+					mainWindow = viewmodel.MainViewModel.launch();
 					mainWindow.setLocationRelativeTo(null);
 					mainWindow.setVisible(true);
 					frmMaratonesProgramacin.dispose();
@@ -100,7 +100,7 @@ public class LoginView {
 			public void actionPerformed(ActionEvent e) {
 				LoginViewModel.Login(userField.getText(), passwordField.getPassword());
 				if (Conexion.isConnected()) {
-					mainWindow = views.launcher.Main.launch();
+					mainWindow = viewmodel.MainViewModel.launch();
 					mainWindow.setLocationRelativeTo(null);
 					mainWindow.setVisible(true);
 					frmMaratonesProgramacin.dispose();
