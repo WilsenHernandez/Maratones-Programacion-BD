@@ -10,14 +10,14 @@ CREATE TABLE Maraton.Equipo(
 	AreaExpTecnico 		VARCHAR(48)		NOT NULL,
 	Clasificacion 		INT				NOT NULL,
 	FechaCreacion 		DATE			NOT NULL,
-	CargoCoach		 	DATE			NOT NULL,
+	CargoCoach		 	VARCHAR(48)			NOT NULL,
 	CONSTRAINT PK_Equipo PRIMARY KEY (NombreEquipo)
 );
 
 CREATE TABLE Maraton.Integrante(
 	CI 					VARCHAR(16)				,
 	Nombre 				VARCHAR(48)		NOT NULL,
-	Telefono 			INT				NOT NULL,
+	Telefono 			VARCHAR(16)			NOT NULL,
 	Direccion 			VARCHAR(128)	NOT NULL,
 	Carrera		 		VARCHAR(48)		NOT NULL,
 	Tipo				VARCHAR(11)		NOT NULL,
