@@ -29,6 +29,7 @@ public class MainTeamLoad extends JPanel {
 		JSeparator separator = new JSeparator();
 		
 		JLabel lblNombreDelEquipo = new JLabel("Nombre del Equipo");
+		lblNombreDelEquipo.setFont(new Font("Open Sans", Font.PLAIN, 12));
 		
 		textField = new JTextField();
 		textField.setColumns(10);
@@ -37,6 +38,7 @@ public class MainTeamLoad extends JPanel {
 		inscribirEquipo.setEnabled(false);
 		
 		JLabel lblIntegrantes = new JLabel("Integrantes");
+		lblIntegrantes.setFont(new Font("Open Sans", Font.PLAIN, 12));
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
