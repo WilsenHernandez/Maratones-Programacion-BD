@@ -64,7 +64,7 @@ public class LoginView {
 		frmMaratonesProgramacin.getContentPane().add(panel, BorderLayout.CENTER);
 		
 		JLabel lblLoginScreen = new JLabel("Maratones de Programación");
-		lblLoginScreen.setFont(new Font("Dialog", Font.BOLD, 16));
+		lblLoginScreen.setFont(new Font("Open Sans", Font.BOLD, 16));
 		
 		JSeparator separator = new JSeparator();
 		
@@ -109,7 +109,7 @@ public class LoginView {
 		});
 
 		
-		JLabel lblVersion = new JLabel("Version 0.1");
+		JLabel lblVersion = new JLabel("Version 0.1.2");
 		lblVersion.setEnabled(false);
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(

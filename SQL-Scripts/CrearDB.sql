@@ -4,9 +4,11 @@ CREATE DATABASE maraton_progra TEMPLATE template1;
 
 CREATE SCHEMA Maraton;
 
+CREATE DOMAIN Maraton.Cedula VARCHAR(16);
+CREATE DOMAIN Maraton.NombreEquipo VARCHAR(48);
 
 CREATE TABLE Maraton.Equipo(
-	NombreEquipo 		VARCHAR(48),
+	NombreEquipo 		Maraton.NombreEquipo,
 	AreaExpTecnico 		VARCHAR(48)		NOT NULL,
 	Clasificacion 		INT				NOT NULL,
 	FechaCreacion 		DATE			NOT NULL,
@@ -15,14 +17,14 @@ CREATE TABLE Maraton.Equipo(
 );
 
 CREATE TABLE Maraton.Integrante(
-	CI 					VARCHAR(16)				,
+	CI 					Maraton.Cedula,
 	Nombre 				VARCHAR(48)		NOT NULL,
 	Telefono 			VARCHAR(16)			NOT NULL,
 	Direccion 			VARCHAR(128)	NOT NULL,
 	Carrera		 		VARCHAR(48)		NOT NULL,
 	Tipo				VARCHAR(11)		NOT NULL,
 	FechaNac			DATE			NOT NULL,
-	NombreEquipo		VARCHAR(48)				,
+	NombreEquipo		Maraton.NombreEquipo,
 	CONSTRAINT PK_Integrante PRIMARY KEY (CI),
 	CONSTRAINT FK_Integrante FOREIGN KEY (NombreEquipo) REFERENCES Maraton.Equipo(NombreEquipo),
 	CONSTRAINT CK_Maraton_Integrante_Tipo CHECK(tipo IN ('Estudiante','Coach','Tecnico'))
@@ -55,7 +57,7 @@ CREATE TABLE Maraton.Problemas(
 	CONSTRAINT FK_Problemas FOREIGN KEY (Region,Fecha) REFERENCES Maraton.Competencia(Region,Fecha)
 );
 CREATE TABLE Maraton.Reporte(
-	CI_Integrante		VARCHAR(48)				,
+	CI_Integrante		Maraton.Cedula,
 	Lugar				VARCHAR(128)			,
 	Fecha				DATE					,
 	Libros				VARCHAR(128)	NOT NULL,
@@ -67,14 +69,14 @@ CREATE TABLE Maraton.Reporte(
 );
 
 CREATE TABLE Maraton.Incentivo_Integrante(
-	CI_Incentivado		VARCHAR(48),
+	CI_Incentivado		Maraton.Cedula,
 	Incentivos			VARCHAR(128),
 	CONSTRAINT PK_Incentivo_Integrante PRIMARY KEY (CI_Incentivado,Incentivos),
 	CONSTRAINT FK_Incentivo_Integrante FOREIGN KEY (CI_Incentivado) REFERENCES Maraton.Integrante(CI)
 );
 
 CREATE TABLE Maraton.Incidente_Viaje(
-	CI_Integrante		VARCHAR(48),
+	CI_Integrante		Maraton.Cedula,
 	Lugar				VARCHAR(128),
 	Fecha				DATE,
 	Incidente			VARCHAR(160)	NOT NULL,
@@ -84,7 +86,7 @@ CREATE TABLE Maraton.Incidente_Viaje(
 );
 
 CREATE TABLE Maraton.Recibe(
-	NombreEquipo		VARCHAR(48),
+	NombreEquipo		Maraton.NombreEquipo,
 	Tipo				VARCHAR(128),
 	Fecha				DATE,
 	CONSTRAINT PK_Recibe PRIMARY KEY (NombreEquipo,Tipo,Fecha),
@@ -93,7 +95,7 @@ CREATE TABLE Maraton.Recibe(
 );
 
 CREATE TABLE Maraton.Participa(
-	NombreEquipo		VARCHAR(48)				,
+	NombreEquipo		Maraton.NombreEquipo,
 	Region				VARCHAR(128)			,
 	Fecha				DATE					,
 	Ranking				INT 			NOT NULL,
@@ -103,7 +105,7 @@ CREATE TABLE Maraton.Participa(
 );
 
 CREATE TABLE Maraton.Resuelve(
-	NombreEquipo		VARCHAR(48),
+	NombreEquipo		Maraton.NombreEquipo,
 	CodigoProblema		INT,
 	Fecha				DATE			NOT NULL,
 	HoraEntrega			TIME			NOT NULL,
