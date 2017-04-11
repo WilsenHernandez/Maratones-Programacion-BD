@@ -1806,3 +1806,13 @@ INSERT INTO Maraton.Integrante (CI,Nombre,Telefono,Direccion,Carrera,Tipo,FechaN
 ('25541279','MYRIAM BARRERO','04146507746','naguanagua','fisica','Coach','24/08/1985','Equipo300');
 
 
+INSERT INTO Maraton.Competencia (Region,Fecha,Sites,Nivel,Duracion,HoraInicio) VALUES 
+('Sur America','02/07/2014','Mexico','Local','02:00:00.000','04:30:00.000'),
+('Sur America','12/04/2015','Mexico','Estadal','02:00:00.000','12:00:00.000'),
+('Sur America','23/02/2015','Mexico','Estadal','02:00:00.000','20:00:00.000'),
+('Sur America','21/06/2016','Mexico','Regional','02:00:00.000','10:34:00.000'),
+('Sur America','21/02/2017','Brasil','Local','02:00:00.000','10:00:54.000'),
+('Sur America','08/12/2017','Brasil','Regional','02:00:00.000','15:04:00.000'),
+('Sur America','28/11/2017','Brasil','Estadal','02:00:00.000','16:00:00.000'),
+('Sur America','13/09/2014','Brasil','Local','02:00:00.000','12:40:00.000'),
+('Sur America','03/10/2015','Brasil','Regional','02:00:00.000','19:30:00.000')

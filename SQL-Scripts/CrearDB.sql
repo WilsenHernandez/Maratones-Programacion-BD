@@ -35,10 +35,10 @@ CREATE TABLE Maraton.Entrenamiento(
 );
 
 CREATE TABLE Maraton.Competencia(
-	Region				VARCHAR(128)			,
+	Sites				VARCHAR(128)			,
 	Fecha				DATE					,
-	Sites				VARCHAR(128)	NOT NULL,
-	Nivel				INT				NOT NULL,
+	Region				VARCHAR(128)	NOT NULL,
+	Nivel				VARCHAR(48)		NOT NULL,
 	Duracion			TIME			NOT NULL,
 	HoraInicio			TIME			NOT NULL,
 	CONSTRAINT PK_Competencia PRIMARY KEY (Region,Fecha)
