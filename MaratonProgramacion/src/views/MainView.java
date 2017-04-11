@@ -55,7 +55,7 @@ public class MainView extends JFrame {
 	 */
 	public MainView() {
 		setResizable(false);
-		setBounds(new Rectangle(0, 0, 800, 600));
+		setBounds(new Rectangle(0, 0, 800, 800));
 		setTitle("Maratones de Programación - Usuario: " + Conexion.getUsername());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
