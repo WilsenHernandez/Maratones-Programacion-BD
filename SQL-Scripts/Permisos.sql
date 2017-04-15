@@ -1,3 +1,5 @@
+\c maraton_progra
+
 CREATE ROLE Coordinador NOSUPERUSER;
 CREATE ROLE Programador NOSUPERUSER;
 CREATE USER user1 NOSUPERUSER IN ROLE Coordinador PASSWORD '12345';
