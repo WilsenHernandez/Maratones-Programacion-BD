@@ -43,7 +43,7 @@ CREATE TABLE Maraton.Competencia(
 	Nivel				VARCHAR(48)		NOT NULL,
 	Duracion			TIME			NOT NULL,
 	HoraInicio			TIME			NOT NULL,
-	CONSTRAINT PK_Competencia PRIMARY KEY (Region,Fecha)
+	CONSTRAINT PK_Competencia PRIMARY KEY (Sites,Fecha)
 );
 
 CREATE TABLE Maraton.Problemas(
@@ -54,7 +54,7 @@ CREATE TABLE Maraton.Problemas(
 	Region				VARCHAR(128)			,
 	Fecha				DATE					,
 	CONSTRAINT PK_Problemas PRIMARY KEY (CodigoProblema),
-	CONSTRAINT FK_Problemas FOREIGN KEY (Region,Fecha) REFERENCES Maraton.Competencia(Region,Fecha)
+	CONSTRAINT FK_Problemas FOREIGN KEY (Sites,Fecha) REFERENCES Maraton.Competencia(Sites,Fecha)
 );
 CREATE TABLE Maraton.Reporte(
 	CI_Integrante		Maraton.Cedula,
@@ -101,7 +101,7 @@ CREATE TABLE Maraton.Participa(
 	Ranking				INT 			NOT NULL,
 	CONSTRAINT PK_Participa PRIMARY KEY (NombreEquipo,Region,Fecha),
 	CONSTRAINT FK_Participa FOREIGN KEY (NombreEquipo) REFERENCES Maraton.Equipo(NombreEquipo),
-	CONSTRAINT FK_Participa2 FOREIGN KEY (Region,Fecha) REFERENCES Maraton.Competencia(Region,Fecha)
+	CONSTRAINT FK_Participa2 FOREIGN KEY (Sites,Fecha) REFERENCES Maraton.Competencia(Sites,Fecha)
 );
 
 CREATE TABLE Maraton.Resuelve(
