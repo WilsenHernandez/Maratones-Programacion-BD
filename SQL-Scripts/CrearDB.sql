@@ -51,7 +51,7 @@ CREATE TABLE Maraton.Problemas(
 	Enunciado			VARCHAR(2048)	NOT NULL,
 	Dificultad			VARCHAR(48)		NOT NULL,
 	TiempoLimiteSol		TIME			NOT NULL,
-	Region				VARCHAR(128)			,
+	Sites				VARCHAR(128)			,
 	Fecha				DATE					,
 	CONSTRAINT PK_Problemas PRIMARY KEY (CodigoProblema),
 	CONSTRAINT FK_Problemas FOREIGN KEY (Sites,Fecha) REFERENCES Maraton.Competencia(Sites,Fecha)
@@ -96,10 +96,10 @@ CREATE TABLE Maraton.Recibe(
 
 CREATE TABLE Maraton.Participa(
 	NombreEquipo		Maraton.NombreEquipo,
-	Region				VARCHAR(128)			,
+	Sites				VARCHAR(128)			,
 	Fecha				DATE					,
 	Ranking				INT 			NOT NULL,
-	CONSTRAINT PK_Participa PRIMARY KEY (NombreEquipo,Region,Fecha),
+	CONSTRAINT PK_Participa PRIMARY KEY (NombreEquipo,Sites,Fecha),
 	CONSTRAINT FK_Participa FOREIGN KEY (NombreEquipo) REFERENCES Maraton.Equipo(NombreEquipo),
 	CONSTRAINT FK_Participa2 FOREIGN KEY (Sites,Fecha) REFERENCES Maraton.Competencia(Sites,Fecha)
 );

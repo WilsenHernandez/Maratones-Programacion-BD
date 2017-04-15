@@ -24,6 +24,7 @@ import org.eclipse.wb.swing.FocusTraversalOnArray;
 import views.panels.MainSearchTeam;
 import views.panels.MainTeamLoad;
 import views.panels.MainWelcome;
+import java.awt.Dimension;
 
 /**
  * @author Wilsen Hernandez
@@ -62,24 +63,12 @@ public class MainView extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnInicio = new JMenu("Menú");
-		mnInicio.setIcon(new ImageIcon(MainView.class.getResource("/assets/32x32/201-menu.png")));
-		mnInicio.setFont(new Font("Open Sans", Font.BOLD, 18));
-		menuBar.add(mnInicio);
-		
 		JMenuItem mntmInicio = new JMenuItem("Inicio");
-		mnInicio.add(mntmInicio);
-		mntmInicio.setFont(new Font("Open Sans", Font.BOLD, 14));
-		
-		JMenuItem mntmCerrarSesion = new JMenuItem("Cerrar Sesion");
-		mnInicio.add(mntmCerrarSesion);
-		mntmCerrarSesion.setFont(new Font("Open Sans", Font.BOLD, 14));
-		mntmCerrarSesion.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				viewmodel.MainViewModel.logout();
-			}
-		});
-		mntmCerrarSesion.setHorizontalAlignment(SwingConstants.CENTER);
+		mntmInicio.setPreferredSize(new Dimension(30, 27));
+		mntmInicio.setHorizontalAlignment(SwingConstants.LEFT);
+		mntmInicio.setIcon(new ImageIcon(MainView.class.getResource("/assets/32x32/201-home.png")));
+		menuBar.add(mntmInicio);
+		mntmInicio.setFont(new Font("Open Sans", Font.BOLD, 18));
 		mntmInicio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setNewPane(new MainWelcome());
@@ -91,23 +80,25 @@ public class MainView extends JFrame {
 		mnEquipos.setFont(new Font("Open Sans", Font.BOLD, 18));
 		menuBar.add(mnEquipos);
 		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Inscribir Equipo");
-		mntmNewMenuItem.setFont(new Font("Open Sans", Font.BOLD, 14));
-		mnEquipos.add(mntmNewMenuItem);
+		JMenuItem inscribirEquipo = new JMenuItem("Inscribir Equipo");
+		inscribirEquipo.setFont(new Font("Open Sans", Font.BOLD, 14));
+		mnEquipos.add(inscribirEquipo);
+		if (model.Conexion.getUsername() == "Programador")
+			inscribirEquipo.setVisible(false);
 		
-		JMenuItem mntmBuscarEquio = new JMenuItem("Buscar Equipo");
-		mntmBuscarEquio.addActionListener(new ActionListener() {
+		JMenuItem buscarEquipo = new JMenuItem("Buscar Equipo");
+		buscarEquipo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setNewPane(new MainSearchTeam());
 			}
 		});
-		mntmBuscarEquio.setFont(new Font("Open Sans", Font.BOLD, 14));
-		mnEquipos.add(mntmBuscarEquio);
+		buscarEquipo.setFont(new Font("Open Sans", Font.BOLD, 14));
+		mnEquipos.add(buscarEquipo);
 		
-		JMenuItem mntmTopEquipos = new JMenuItem("Top Equipos");
-		mntmTopEquipos.setFont(new Font("Open Sans", Font.BOLD, 14));
-		mnEquipos.add(mntmTopEquipos);
-		mntmNewMenuItem.addActionListener(new ActionListener() {
+		JMenuItem topEquipos = new JMenuItem("Top Equipos");
+		topEquipos.setFont(new Font("Open Sans", Font.BOLD, 14));
+		mnEquipos.add(topEquipos);
+		inscribirEquipo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setNewPane(new MainTeamLoad());
 			}
@@ -118,14 +109,29 @@ public class MainView extends JFrame {
 		mnCompetencias.setFont(new Font("Open Sans", Font.BOLD, 18));
 		menuBar.add(mnCompetencias);
 		
+		JMenuItem mntmVerCompetencias = new JMenuItem("Buscar Competencias");
+		mntmVerCompetencias.setFont(new Font("Open Sans", Font.BOLD, 14));
+		mnCompetencias.add(mntmVerCompetencias);
+		
 		JMenu mnProblemas = new JMenu("Problemas");
 		mnProblemas.setIcon(new ImageIcon(MainView.class.getResource("/assets/32x32/201-light-bulb.png")));
 		mnProblemas.setFont(new Font("Open Sans", Font.BOLD, 18));
 		menuBar.add(mnProblemas);
 		
+		JMenuItem mntmCerrarSesion = new JMenuItem("Cerrar Sesion");
+		mntmCerrarSesion.setIcon(new ImageIcon(MainView.class.getResource("/assets/32x32/201-close.png")));
+		menuBar.add(mntmCerrarSesion);
+		mntmCerrarSesion.setFont(new Font("Open Sans", Font.BOLD, 18));
+		mntmCerrarSesion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				viewmodel.MainViewModel.logout();
+			}
+		});
+		mntmCerrarSesion.setHorizontalAlignment(SwingConstants.CENTER);
+		
 		welcomePane = new MainWelcome();
 		setContentPane(welcomePane);
-		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{menuBar, welcomePane, mnInicio, mntmInicio, mntmCerrarSesion, mnEquipos, mntmNewMenuItem, mntmBuscarEquio, mntmTopEquipos, mnCompetencias, mnProblemas}));
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{menuBar, mntmInicio, mntmCerrarSesion, mnEquipos, inscribirEquipo, buscarEquipo, topEquipos, mnCompetencias, mnProblemas}));
 	}
 	
 	/**

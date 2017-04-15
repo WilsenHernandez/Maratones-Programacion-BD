@@ -67,6 +67,8 @@ public class MainSearchTeam extends JPanel {
 				String equipo = nombreEquipo.getText();
 				mostrarEquipo(viewmodel.panels.SearchTeam.buscarEquipo(equipo));
 				mostrarIntegrantes(viewmodel.panels.SearchTeam.buscarEstudiantes(equipo));
+				mostrarTecnico(viewmodel.panels.SearchTeam.buscarTecnico(equipo));
+				mostrarCoach(viewmodel.panels.SearchTeam.buscarCoach(equipo));
 			}
 		});
 		nombreEquipo.setFont(new Font("Open Sans", Font.PLAIN, 12));
@@ -79,6 +81,8 @@ public class MainSearchTeam extends JPanel {
 				String equipo = nombreEquipo.getText();
 				mostrarEquipo(viewmodel.panels.SearchTeam.buscarEquipo(equipo));
 				mostrarIntegrantes(viewmodel.panels.SearchTeam.buscarEstudiantes(equipo));
+				mostrarTecnico(viewmodel.panels.SearchTeam.buscarTecnico(equipo));
+				mostrarCoach(viewmodel.panels.SearchTeam.buscarCoach(equipo));
 			}
 		});
 		
@@ -465,6 +469,7 @@ public class MainSearchTeam extends JPanel {
 		}
 	}
 	
+	
 	void mostrarIntegrantes(ResultSet arg) {
 		try {
 			arg.next();
@@ -513,6 +518,28 @@ public class MainSearchTeam extends JPanel {
 			intDireccion3.setText("");
 			intCarrera3.setText("");
 			intFecha3.setText("");
+		}
+	}
+
+	void mostrarTecnico(ResultSet arg) {
+		try {
+			arg.next();
+			nombreTecnicoResult.setText(arg.getString(1));
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+			nombreTecnicoResult.setText("");
+		}
+	}
+	
+	void mostrarCoach(ResultSet arg) {
+		try {
+			arg.next();
+			coachNombre.setText(arg.getString(1));
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+			coachNombre.setText("");
 		}
 	}
 }

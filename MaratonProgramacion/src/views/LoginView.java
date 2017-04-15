@@ -19,6 +19,7 @@ import javax.swing.UIManager;
 import model.Conexion;
 
 import viewmodel.LoginViewModel;
+import java.awt.Toolkit;
 
 public class LoginView {
 
@@ -54,6 +55,7 @@ public class LoginView {
 	 */
 	private void initialize() {
 		frmMaratonesProgramacin = new JFrame();
+		frmMaratonesProgramacin.setIconImage(Toolkit.getDefaultToolkit().getImage(LoginView.class.getResource("/assets/32x32/201-atomic.png")));
 		frmMaratonesProgramacin.setResizable(false);
 		frmMaratonesProgramacin.setTitle("Maratones Programación");
 		frmMaratonesProgramacin.setBounds(100, 100, 285, 246);

@@ -42,4 +42,41 @@ public class SearchTeam {
 		return result;
 	}
 
+	public static ResultSet buscarTecnico(String nombreEquipo) {
+		ResultSet result = null;
+		try {
+			StringBuilder SQLQuery = new StringBuilder();
+			SQLQuery.append("SELECT P.Nombre ");
+			SQLQuery.append("FROM Maraton.Equipo T JOIN Maraton.Integrante P ");
+			SQLQuery.append("ON T.NombreEquipo = P.NombreEquipo ");
+			SQLQuery.append("WHERE T.NombreEquipo = '" + nombreEquipo + "' ");
+			SQLQuery.append("AND P.Tipo = 'Tecnico' ;");
+			
+			Statement query = model.Conexion.log.createStatement();
+			result = query.executeQuery(SQLQuery.toString());
+			return result;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	public static ResultSet buscarCoach(String nombreEquipo) {
+		ResultSet result = null;
+		try {
+			StringBuilder SQLQuery = new StringBuilder();
+			SQLQuery.append("SELECT P.Nombre ");
+			SQLQuery.append("FROM Maraton.Equipo T JOIN Maraton.Integrante P ");
+			SQLQuery.append("ON T.NombreEquipo = P.NombreEquipo ");
+			SQLQuery.append("WHERE T.NombreEquipo = '" + nombreEquipo + "' ");
+			SQLQuery.append("AND P.Tipo = 'Coach' ;");
+			
+			Statement query = model.Conexion.log.createStatement();
+			result = query.executeQuery(SQLQuery.toString());
+			return result;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }
