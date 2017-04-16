@@ -55,7 +55,7 @@ public class LoginView {
 	 */
 	private void initialize() {
 		frmMaratonesProgramacin = new JFrame();
-		frmMaratonesProgramacin.setIconImage(Toolkit.getDefaultToolkit().getImage(LoginView.class.getResource("/assets/32x32/201-atomic.png")));
+		frmMaratonesProgramacin.setIconImage(Toolkit.getDefaultToolkit().getImage(LoginView.class.getResource("/assets/64x64/201-cube.png")));
 		frmMaratonesProgramacin.setResizable(false);
 		frmMaratonesProgramacin.setTitle("Maratones Programación");
 		frmMaratonesProgramacin.setBounds(100, 100, 285, 246);
