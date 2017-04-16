@@ -1,11 +1,11 @@
 \c maraton_progra
 
---CREATE ROLE Coordinador NOSUPERUSER;
---CREATE ROLE Programador NOSUPERUSER;
-CREATE USER Coor NOSUPERUSER IN ROLE Coordinador;
-ALTER ROLE Coor LOGIN;
-CREATE USER Progra NOSUPERUSER IN ROLE Programador;
-ALTER ROLE Progra LOGIN;
+CREATE ROLE Coordinador NOSUPERUSER;
+CREATE ROLE Programador NOSUPERUSER;
+CREATE USER Coor NOSUPERUSER IN ROLE Coordinador PASSWORD '1234';
+ALTER ROLE Coor WITH LOGIN;
+CREATE USER Progra NOSUPERUSER IN ROLE Programador PASSWORD '1234';
+ALTER ROLE Progra WITH LOGIN;
 GRANT SELECT,UPDATE,DELETE ON ALL TABLES IN SCHEMA Maraton to Coordinador; --Puede consultar,modificar,y borrar todas las tablas
 
 GRANT INSERT,SELECT ON Maraton.Integrante TO Programador; --Aqui solo debe ver e insertar su informacion personal y solo ver el de su coach y entrenador
