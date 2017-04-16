@@ -6,6 +6,8 @@ CREATE USER Coordinador NOSUPERUSER PASSWORD '1234';
 ALTER ROLE Coordinador WITH LOGIN;
 CREATE USER Programador NOSUPERUSER PASSWORD '1234';
 ALTER ROLE Programador WITH LOGIN;
+GRANT CONNECT ON DATABASE maraton_progra to Coordinador;
+GRANT USAGE ON SCHEMA Maraton TO Programador;
 GRANT SELECT,UPDATE,DELETE ON ALL TABLES IN SCHEMA Maraton to Coordinador; --Puede consultar,modificar,y borrar todas las tablas
 
 GRANT INSERT,SELECT ON Maraton.Integrante TO Programador; --Aqui solo debe ver e insertar su informacion personal y solo ver el de su coach y entrenador
