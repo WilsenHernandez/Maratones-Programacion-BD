@@ -1,9 +1,9 @@
 package viewmodel.panels;
 
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class SearchTeam {
 	public static ResultSet buscarEquipo(String nombreEquipo) {
@@ -12,10 +12,11 @@ public class SearchTeam {
 			StringBuilder SQLQuery = new StringBuilder();
 			SQLQuery.append("SELECT NombreEquipo, Clasificacion, FechaCreacion, AreaExpTecnico, CargoCoach ");
 			SQLQuery.append("FROM Maraton.Equipo ");
-			SQLQuery.append("WHERE NombreEquipo = '" + nombreEquipo+ "';");
+			SQLQuery.append("WHERE NombreEquipo = ?;");
 			
-			Statement query = model.Conexion.log.createStatement();
-			result = query.executeQuery(SQLQuery.toString());
+			PreparedStatement query = model.Conexion.log.prepareStatement(SQLQuery.toString());
+			query.setString(1, nombreEquipo);
+			result = query.executeQuery();
 			return result;
 		} catch (SQLException e) { 
 			
@@ -27,14 +28,15 @@ public class SearchTeam {
 		ResultSet result = null;
 		try {
 			StringBuilder SQLQuery = new StringBuilder();
-			SQLQuery.append("SELECT P.CI, P.Nombre, P.Telefono, P.Direccion, P.Carrera, P.FechaNac ");
+			SQLQuery.append("SELECT P.CI AS Cedula, P.Nombre AS Nombre, P.Telefono AS Telefono, P.Direccion AS Direccion, P.Carrera AS Carrera, P.FechaNac AS FechaDeNacimiento ");
 			SQLQuery.append("FROM Maraton.Equipo T JOIN Maraton.Integrante P ");
 			SQLQuery.append("ON T.NombreEquipo = P.NombreEquipo ");
-			SQLQuery.append("WHERE T.NombreEquipo = '" + nombreEquipo + "' ");
-			SQLQuery.append("AND P.Tipo = 'Estudiante' ;");
+			SQLQuery.append("WHERE T.NombreEquipo = ? ");
+			SQLQuery.append("AND P.Tipo = 'Estudiante';");
 			
-			Statement query = model.Conexion.log.createStatement();
-			result = query.executeQuery(SQLQuery.toString());
+			PreparedStatement query = model.Conexion.log.prepareStatement(SQLQuery.toString());
+			query.setString(1, nombreEquipo);
+			result = query.executeQuery();
 			return result;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -49,11 +51,12 @@ public class SearchTeam {
 			SQLQuery.append("SELECT P.Nombre ");
 			SQLQuery.append("FROM Maraton.Equipo T JOIN Maraton.Integrante P ");
 			SQLQuery.append("ON T.NombreEquipo = P.NombreEquipo ");
-			SQLQuery.append("WHERE T.NombreEquipo = '" + nombreEquipo + "' ");
-			SQLQuery.append("AND P.Tipo = 'Tecnico' ;");
+			SQLQuery.append("WHERE T.NombreEquipo = ? ");
+			SQLQuery.append("AND P.Tipo = 'Tecnico';");
 			
-			Statement query = model.Conexion.log.createStatement();
-			result = query.executeQuery(SQLQuery.toString());
+			PreparedStatement query = model.Conexion.log.prepareStatement(SQLQuery.toString());
+			query.setString(1, nombreEquipo);
+			result = query.executeQuery();
 			return result;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -68,11 +71,12 @@ public class SearchTeam {
 			SQLQuery.append("SELECT P.Nombre ");
 			SQLQuery.append("FROM Maraton.Equipo T JOIN Maraton.Integrante P ");
 			SQLQuery.append("ON T.NombreEquipo = P.NombreEquipo ");
-			SQLQuery.append("WHERE T.NombreEquipo = '" + nombreEquipo + "' ");
-			SQLQuery.append("AND P.Tipo = 'Coach' ;");
+			SQLQuery.append("WHERE T.NombreEquipo = ? ");
+			SQLQuery.append("AND P.Tipo = 'Coach';");
 			
-			Statement query = model.Conexion.log.createStatement();
-			result = query.executeQuery(SQLQuery.toString());
+			PreparedStatement query = model.Conexion.log.prepareStatement(SQLQuery.toString());
+			query.setString(1, nombreEquipo);
+			result = query.executeQuery();
 			return result;
 		} catch (SQLException e) {
 			e.printStackTrace();
