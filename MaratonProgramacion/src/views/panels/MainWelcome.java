@@ -31,7 +31,7 @@ public class MainWelcome extends JPanel {
 		
 		competencias = new JTable();
 		competencias.setBorder(new LineBorder(null, 1, true));
-		competencias.setFont(new Font("Open Sans", Font.PLAIN, 14));
+		competencias.setFont(new Font("Open Sans", Font.PLAIN, 16));
 		competencias.setEnabled(false);
 		competencias.setRowSelectionAllowed(false);
 		
@@ -41,18 +41,39 @@ public class MainWelcome extends JPanel {
 		equipos.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		equipos.setEnabled(false);
 		equipos.setFont(new Font("Open Sans", Font.PLAIN, 14));
+		
+		JLabel lblAbril = new JLabel("Abril, 2017");
+		lblAbril.setFont(new Font("Open Sans", Font.PLAIN, 14));
+		
+		JLabel lblWilsenHernandez = new JLabel("Wilsen Hernandez");
+		lblWilsenHernandez.setFont(new Font("Open Sans", Font.PLAIN, 14));
+		
+		JLabel lblJoseBriceo = new JLabel("Jose Briceño");
+		lblJoseBriceo.setFont(new Font("Open Sans", Font.PLAIN, 14));
+		
+		JLabel lblFreddyDuran = new JLabel("Freddy Duran");
+		lblFreddyDuran.setFont(new Font("Open Sans", Font.PLAIN, 14));
 		GroupLayout gl_welcomePane = new GroupLayout(this);
 		gl_welcomePane.setHorizontalGroup(
 			gl_welcomePane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_welcomePane.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_welcomePane.createParallelGroup(Alignment.LEADING)
-						.addComponent(bienvenido, GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
-						.addComponent(lblCompetenciasMasRecientes)
-						.addComponent(lblEquiposRecientementeInscritos)
-						.addGroup(gl_welcomePane.createParallelGroup(Alignment.TRAILING, false)
-							.addComponent(equipos, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(competencias, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)))
+						.addComponent(bienvenido, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
+						.addGroup(Alignment.TRAILING, gl_welcomePane.createSequentialGroup()
+							.addGroup(gl_welcomePane.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblCompetenciasMasRecientes)
+								.addComponent(competencias, GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE))
+							.addGap(18)
+							.addGroup(gl_welcomePane.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblEquiposRecientementeInscritos)
+								.addComponent(equipos, GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)))
+						.addGroup(Alignment.TRAILING, gl_welcomePane.createSequentialGroup()
+							.addComponent(lblAbril)
+							.addPreferredGap(ComponentPlacement.RELATED, 435, Short.MAX_VALUE)
+							.addComponent(lblWilsenHernandez))
+						.addComponent(lblJoseBriceo, Alignment.TRAILING)
+						.addComponent(lblFreddyDuran, Alignment.TRAILING))
 					.addContainerGap())
 		);
 		gl_welcomePane.setVerticalGroup(
@@ -61,22 +82,32 @@ public class MainWelcome extends JPanel {
 					.addContainerGap()
 					.addComponent(bienvenido)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblCompetenciasMasRecientes)
+					.addGroup(gl_welcomePane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblCompetenciasMasRecientes)
+						.addComponent(lblEquiposRecientementeInscritos))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(competencias, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
+					.addGroup(gl_welcomePane.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(competencias, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(equipos, GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
+					.addComponent(lblFreddyDuran)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblEquiposRecientementeInscritos)
+					.addComponent(lblJoseBriceo)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(equipos, GroupLayout.PREFERRED_SIZE, 241, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(34, Short.MAX_VALUE))
+					.addGroup(gl_welcomePane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblAbril)
+						.addComponent(lblWilsenHernandez))
+					.addContainerGap())
 		);
 		gl_welcomePane.setAutoCreateContainerGaps(true);
 		setLayout(gl_welcomePane);
 		
 		
 		if (model.Conexion.isConnected()) {
-			competencias.setModel(DbUtils.resultSetToTableModel(viewmodel.panels.MainWelcome.getCompetenciasRecientes()));
-			equipos.setModel(DbUtils.resultSetToTableModel(viewmodel.panels.MainWelcome.getEquiposRecientes()));
+			try {
+				competencias.setModel(DbUtils.resultSetToTableModel(viewmodel.panels.MainWelcome.getCompetenciasRecientes()));
+				equipos.setModel(DbUtils.resultSetToTableModel(viewmodel.panels.MainWelcome.getEquiposRecientes()));
+			} catch (Exception e) { }
 		}
 	}
 }

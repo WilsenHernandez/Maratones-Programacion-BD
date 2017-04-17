@@ -21,9 +21,7 @@ import model.Conexion;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
-import views.panels.MainSearchTeam;
-import views.panels.MainTeamLoad;
-import views.panels.MainWelcome;
+import views.panels.*;
 import java.awt.Dimension;
 
 /**
@@ -117,6 +115,15 @@ public class MainView extends JFrame {
 		mnProblemas.setIcon(new ImageIcon(MainView.class.getResource("/assets/32x32/201-light-bulb.png")));
 		mnProblemas.setFont(new Font("Open Sans", Font.BOLD, 18));
 		menuBar.add(mnProblemas);
+		
+		JMenuItem mntmBuscarProblemas = new JMenuItem("Buscar Problemas");
+		mntmBuscarProblemas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setNewPane(new SearchProblems());
+			}
+		});
+		mntmBuscarProblemas.setFont(new Font("Open Sans", Font.BOLD, 14));
+		mnProblemas.add(mntmBuscarProblemas);
 		
 		JMenuItem mntmCerrarSesion = new JMenuItem("Cerrar Sesion");
 		mntmCerrarSesion.setIcon(new ImageIcon(MainView.class.getResource("/assets/32x32/201-close.png")));

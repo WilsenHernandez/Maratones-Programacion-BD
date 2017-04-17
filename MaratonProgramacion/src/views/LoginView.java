@@ -111,7 +111,7 @@ public class LoginView {
 		});
 
 		
-		JLabel lblVersion = new JLabel("Version 0.1.2");
+		JLabel lblVersion = new JLabel("Version 0.3");
 		lblVersion.setEnabled(false);
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
