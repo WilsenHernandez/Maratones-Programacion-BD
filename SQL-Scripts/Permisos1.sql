@@ -8,8 +8,8 @@ CREATE USER Progra NOSUPERUSER IN ROLE Programador PASSWORD '1234';
 ALTER ROLE Progra WITH LOGIN;
 GRANT USAGE ON SCHEMA Maraton TO Progra;
 GRANT USAGE ON SCHEMA Maraton TO Coor;
-GRANT CONNECT ON DATABASE Maraton to Progra;
-GRANT CONNECT ON DATABASE Maraton to Coor;
+GRANT CONNECT ON DATABASE Maraton_Progra to Progra;
+GRANT CONNECT ON DATABASE Maraton_Progra to Coor;
 GRANT SELECT,UPDATE,DELETE ON ALL TABLES IN SCHEMA Maraton to Coordinador; --Puede consultar,modificar,y borrar todas las tablas
 
 GRANT INSERT,SELECT ON Maraton.Integrante TO Programador; --Aqui solo debe ver e insertar su informacion personal y solo ver el de su coach y entrenador

@@ -1,3 +1,5 @@
 \i EliminarDB.sql
-DROP USER Programador;
-DROP USER Coordinador;
+DROP ROLE Programador;
+DROP ROLE Coordinador;
+DROP USER Coor;
+DROP USER Progra;
