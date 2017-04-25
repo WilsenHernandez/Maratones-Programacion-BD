@@ -107,11 +107,8 @@ CREATE TABLE Maraton.Participa(
 CREATE TABLE Maraton.Resuelve(
 	NombreEquipo		Maraton.NombreEquipo,
 	CodigoProblema		INT,
-	Fecha				DATE			NOT NULL,
 	HoraEntrega			TIME			NOT NULL,
-	TipoSolucion		VARCHAR(48)		NOT NULL,
 	Lenguaje			VARCHAR(48)		NOT NULL,
-	TiempoSolucion		TIME			NOT NULL,
 	CONSTRAINT PK_Resuelve PRIMARY KEY (NombreEquipo,CodigoProblema),
 	CONSTRAINT FK_Resuelve FOREIGN KEY (NombreEquipo) REFERENCES Maraton.Equipo(NombreEquipo),
 	CONSTRAINT FK_Resuelve2 FOREIGN KEY (CodigoProblema) REFERENCES Maraton.Problemas(CodigoProblema)
