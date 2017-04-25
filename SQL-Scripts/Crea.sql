@@ -1,4 +1,4 @@
-\i CrearDB.sql
+\i NuevaDB.sql
 \i InsertarDatos.sql
-\i Permisos1.sql
+\i Permisos.sql
 
