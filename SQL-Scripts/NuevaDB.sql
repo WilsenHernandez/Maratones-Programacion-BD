@@ -112,4 +112,4 @@ CREATE TABLE Maraton.Resuelve(
 	CONSTRAINT PK_Resuelve PRIMARY KEY (NombreEquipo,CodigoProblema),
 	CONSTRAINT FK_Resuelve FOREIGN KEY (NombreEquipo) REFERENCES Maraton.Equipo(NombreEquipo),
 	CONSTRAINT FK_Resuelve2 FOREIGN KEY (CodigoProblema) REFERENCES Maraton.Problemas(CodigoProblema)
-);
+);CodigoProblema

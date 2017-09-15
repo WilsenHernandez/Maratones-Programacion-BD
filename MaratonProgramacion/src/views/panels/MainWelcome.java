@@ -36,6 +36,7 @@ public class MainWelcome extends JPanel {
 		competencias.setRowSelectionAllowed(false);
 		
 		JLabel lblEquiposRecientementeInscritos = new JLabel("Equipos recientemente inscritos");
+		lblEquiposRecientementeInscritos.setFont(new Font("Open Sans", Font.PLAIN, 12));
 		
 		equipos = new JTable();
 		equipos.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));

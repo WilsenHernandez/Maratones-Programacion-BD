@@ -62,7 +62,7 @@ public class MainView extends JFrame {
 		setJMenuBar(menuBar);
 		
 		JMenuItem mntmInicio = new JMenuItem("Inicio");
-		mntmInicio.setPreferredSize(new Dimension(30, 27));
+		mntmInicio.setPreferredSize(new Dimension(50, 27));
 		mntmInicio.setHorizontalAlignment(SwingConstants.LEFT);
 		mntmInicio.setIcon(new ImageIcon(MainView.class.getResource("/assets/32x32/201-home.png")));
 		menuBar.add(mntmInicio);
@@ -94,6 +94,11 @@ public class MainView extends JFrame {
 		mnEquipos.add(buscarEquipo);
 		
 		JMenuItem topEquipos = new JMenuItem("Top Equipos");
+		topEquipos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setNewPane(new MainTopTeams());
+			}
+		});
 		topEquipos.setFont(new Font("Open Sans", Font.BOLD, 14));
 		mnEquipos.add(topEquipos);
 		inscribirEquipo.addActionListener(new ActionListener() {
